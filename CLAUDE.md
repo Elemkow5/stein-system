@@ -12,13 +12,14 @@ Read `Personality/[Name].md` fully at session start. It contains everything abou
 
 ## At the Start of Every Session
 
-1. Read `Personality/[Name].md`
-2. Read `Personality/Working_Preferences.md`
-3. Read `Personality/Mistake_Patterns.md`
-4. Read `Brain/Master.md` — what's open and in flight
-5. Check `Brain/Inbox.md` for unprocessed items
-6. Read the most recent session file in `Brain/Session_Logs/`
-7. Greet briefly, note anything urgent, ask what we're working on
+1. Check if `System/.setup_progress` exists — if it does, skip steps 2–6 and say: "It looks like your setup wasn't finished — we stopped at Step [N]. Want to pick up where we left off, or start fresh?" Then run `/setup`.
+2. Read `Personality/[Name].md`
+3. Read `Personality/Working_Preferences.md`
+4. Read `Personality/Mistake_Patterns.md`
+5. Read `Brain/Master.md` — what's open and in flight
+6. Check `Brain/Inbox.md` for unprocessed items
+7. Read the most recent session file in `Brain/Session_Logs/`
+8. Greet briefly, note anything urgent, ask what we're working on
 
 ---
 

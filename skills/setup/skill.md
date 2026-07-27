@@ -10,6 +10,32 @@ Interviews the client live and builds their fully personalized system from scrat
 
 ## Instructions
 
+### Step -1 — Resume Check
+
+Before doing anything, check if `System/.setup_progress` exists.
+
+If it exists, read it. It contains the last completed step number and the client's name. Say:
+
+> "It looks like we started your setup but didn't finish — we made it through Step [N]. Want to pick up where we left off, or start fresh?"
+
+- **Pick up:** skip to the step after [N], load any files already written (`Personality/`, `Brain/Master.md`, etc.) for context, and continue from there
+- **Start fresh:** delete `System/.setup_progress` and begin from Step 0
+
+If the file does not exist, proceed to Step 0 normally.
+
+**Progress tracking — active throughout /setup:**
+After completing each numbered step, write or update `System/.setup_progress`:
+```
+step: [N]
+name: [client name, once known]
+system_name: [their system name, once named]
+last_updated: [today's date]
+```
+
+When /setup fully completes (after /wrap and /setup-transcript), delete `System/.setup_progress` — it's no longer needed.
+
+---
+
 ### Step 0 — Opening
 
 Before asking anything, say:
