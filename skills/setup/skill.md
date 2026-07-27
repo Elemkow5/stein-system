@@ -754,9 +754,64 @@ Open `http://localhost:7272`. Confirm their name appears in the sidebar (it read
 
 ---
 
-### Step 13 — Run /planning
+### Step 12.5 — Install the nightly Layer 2 audit job
 
-Run `/planning` to close out the setup session. This gives the client their first real experience of the system working — calendar pulled, priorities set, today's one thing identified.
+This schedules the autonomous nightly knowledge extraction to run at 10pm daily via macOS launchd.
+
+```bash
+VAULT_PATH=$(pwd)
+CLAUDE_PATH=$(which claude)
+SCRIPT_PATH="$VAULT_PATH/Brain/System/Scripts/layer2-audit.py"
+LABEL="com.stein.layer2audit"
+PLIST_PATH="$HOME/Library/LaunchAgents/$LABEL.plist"
+NODE_BIN=$(dirname "$CLAUDE_PATH")
+
+cat > "$PLIST_PATH" << PLIST
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>$LABEL</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>$SCRIPT_PATH</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>22</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>$NODE_BIN:/usr/local/bin:/usr/bin:/bin</string>
+        <key>HOME</key>
+        <string>$HOME</string>
+    </dict>
+    <key>WorkingDirectory</key>
+    <string>$VAULT_PATH</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/stein-layer2-audit.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/stein-layer2-audit-err.log</string>
+</dict>
+</plist>
+PLIST
+
+launchctl load "$PLIST_PATH" && echo "Layer 2 audit job scheduled at 10pm daily." || echo "launchctl load failed — check $PLIST_PATH"
+```
+
+If this fails, note it in Master.md as a follow-up — don't debug during setup.
+
+---
+
+### Step 13 — Run /checkin
+
+Run `/checkin` → choose **daily** to close out the setup session. This gives the client their first real experience of the system working — calendar pulled, priorities set, today's one thing identified.
 
 By the end they should have:
 - A clear picture of today's priorities
@@ -771,7 +826,7 @@ Say:
 
 > "Your system is live.
 >
-> From now on: open Claude Code in this folder every morning and run `/planning`. That's the only habit that matters to start. Everything else — `/capture`, `/wrap`, `/recall` — you'll pick up naturally as you use it.
+> From now on: open Claude Code in this folder every morning and run `/checkin`. That's the only habit that matters to start. Everything else — `/capture`, `/wrap`, `/recall` — you'll pick up naturally as you use it.
 >
 > The system gets smarter every session. Every email updates your contacts automatically. Every correction becomes a permanent rule. The longer it runs, the more it knows — and the more useful it gets."
 

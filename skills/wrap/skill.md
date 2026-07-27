@@ -80,9 +80,21 @@ Find the current session file in `Brain/Session_Logs/` (most recently modified).
 [Any, or "None"]
 ```
 
-### Step 8 — Sync to Master.md
+### Step 8 — Sync Next Steps (Sticky-aware routing)
 
-Add next steps to `Brain/Master.md` under `## Backlog` tagged with project name:
+For each next step, check whether the project has a Sticky before writing:
+
+```bash
+ls Brain/Projects/*/Sticky.md 2>/dev/null
+```
+
+**Project with a Sticky.md** → write to `Brain/Projects/[Name]/Sticky.md` under `## To-Do`:
+```
+- [ ] Task description
+```
+Do NOT also write to Master.md — the Sticky is the source of truth for that project.
+
+**No Sticky, or non-project task** → write to `Brain/Master.md` under `## Backlog` tagged with project name:
 ```
 - [ ] [ProjectName] Draft three-email sequence
 ```

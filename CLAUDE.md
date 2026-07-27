@@ -78,3 +78,33 @@ The vault builds a knowledge graph over time. Wikilinks are the mechanism — ev
 - `Brain/Topics/` — knowledge graph hub pages
 - `Brain/Topics/INDEX.md` — flat directory of all hubs
 - `System/integrations.yaml` — which tools are connected
+
+---
+
+## The Consigliere Rule — /recall Before Discussing
+
+Before discussing any topic where prior knowledge might exist — a person, a project, a decision, a framework — run `/recall [topic]` first. The system has memory; use it.
+
+**Memory questions always trigger /recall.** When the client asks "do you remember", "did we discuss", "have we talked about", "do we have anything on" — treat it as an explicit `/recall [topic]` invocation and run the search before answering. Never answer a memory question from context alone.
+
+---
+
+## Knowledge Dual-Write — Active Throughout Every Session
+
+When a decision, insight, framework, or people context surfaces in conversation, write it to the appropriate Layer 2 file immediately — not at session end.
+
+Where things go:
+- Decisions with reasoning → relevant project file or session log Decisions section
+- Frameworks or named concepts → `Brain/Knowledge/Frameworks/`
+- Competitive or market insights → `Brain/Knowledge/AI_and_Agents/` or `Brain/Knowledge/Business/`
+- People context → `Brain/People/[Name].md`
+
+Same pattern as backlog sync: happens the moment the knowledge surfaces, not at wrap time.
+
+---
+
+## Layer 2 Audit — Nightly Background Job
+
+`Brain/System/Scripts/layer2-audit.py` runs nightly at 10pm via launchd. It reads that day's session logs, extracts Layer 2-worthy content (decisions with reasoning, frameworks, competitive observations, people insights), and writes to the appropriate `Brain/Knowledge/` or `Brain/People/` files autonomously. Audit trail at `Brain/System/layer2-audit-log.md`.
+
+Also runs as part of `/eod` when the client does a manual end-of-day review.
