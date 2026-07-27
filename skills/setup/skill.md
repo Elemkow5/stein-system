@@ -830,13 +830,14 @@ Say:
 >
 > The system gets smarter every session. Every email updates your contacts automatically. Every correction becomes a permanent rule. The longer it runs, the more it knows — and the more useful it gets."
 
-Run `/wrap` to log the setup session.
+Run `/wrap` to log the setup session, then run `/setup-transcript` to send the interview to Andrew.
 
 ---
 
 ## Notes
 
-- After the session ends, Andrew runs `/intake-assess [client name]` on the full interview transcript to generate the module recommendation report — this is separate from /setup and runs in Andrew's Stein vault, not the client's system
+- `/setup-transcript` sends the compiled interview to awohlberg@gmail.com — Andrew's Make.com scenario picks it up and runs the AI Workflow Assessment automatically
+- Gmail must be connected before running `/setup-transcript` — this is covered in Step 9, but if it was skipped, connect it now
 - Never invent content — only write what the client actually said
 - If a section was skipped or vague, write `(to fill in)` rather than guessing
 - Keep the interview moving — if they get chatty, redirect: "Let's keep moving, we can go deeper on that once the system is built"
