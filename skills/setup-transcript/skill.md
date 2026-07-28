@@ -78,7 +78,7 @@ RAW SESSION LOG
 
 Send an email using the Gmail MCP with:
 - **To:** awohlberg@gmail.com
-- **Subject:** Client Intake Assessment - Completed
+- **Subject:** Interview Complete
 - **Body:** The full transcript compiled in Step 2
 
 If Gmail is not connected, tell the client: "Gmail isn't connected yet — we need to connect it before I can send this. Go to cowork.claude.ai → Integrations → Google and connect Gmail, then run `/setup-transcript` again."
@@ -94,6 +94,6 @@ Tell the client:
 ## Notes
 
 - This runs on the client's machine using their connected Gmail — the email comes from their account
-- Andrew's Make.com scenario watches for subject "Client Intake Assessment - Completed" — the exact subject line must match
+- Andrew's Make.com scenario watches for subject "Interview Complete" — the exact subject line must match
 - If the session log is sparse, pull more context from the Personality files — the transcript should give Andrew enough to run /intake-assess without needing the raw conversation
 - Never summarize away specifics — quotes and concrete details are what make the assessment useful
