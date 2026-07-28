@@ -1,3 +1,30 @@
+# Ignore client-generated skill directories — only scaffold skills are tracked
+skills/*/
+!skills/brief/
+!skills/capture/
+!skills/checkin/
+!skills/commitment/
+!skills/comms-reply/
+!skills/comms-triage/
+!skills/continue/
+!skills/daily/
+!skills/debrief/
+!skills/eod/
+!skills/goal/
+!skills/handoff/
+!skills/import-setup/
+!skills/inbox/
+!skills/kb-audit/
+!skills/lets-go/
+!skills/log/
+!skills/plan/
+!skills/recall/
+!skills/setup/
+!skills/setup-transcript/
+!skills/stein-doctor/
+!skills/update/
+!skills/wrap/
+
 # Local Claude Code files — never committed
 settings.local.json
 staging/
