@@ -81,6 +81,38 @@ Ask: "How was last week? What got done, what got skipped, and why?"
 
 Listen. Reflect back what you hear about patterns — what's moving, what's stuck.
 
+### W2a — Commitment Candidates Review
+Read `Brain/People/_commitment_candidates.md`. If the file doesn't exist or has no entries, skip silently.
+
+If entries exist, surface them before touching the ledger:
+
+```
+Before the audit — [N] unconfirmed commitment candidate(s) from this week:
+
+• [you → Person]: "[what was said]" — via [Email/Slack/Calendar], [date]
+• [Person → you]: "[what was said]" — via [Email/Slack/Calendar], [date]
+
+Review one by one?
+```
+
+For each candidate, ask: "Confirm as an open commitment, dismiss, or already done?"
+
+**Confirm:** Write to `Brain/Commitments.md` under `## Open Commitments`:
+```
+- [ ] [DATE MADE] [what was committed] — due [DATE if mentioned, or "TBD"]
+  *Project: [project if inferable, or leave blank]*
+  *Via: [Email/Slack/Calendar — [date]]*
+```
+Also write to the relevant `Brain/People/[Name].md` under `## Open Commitments` (if you committed) or `## Open Items` (if they committed).
+
+**Dismiss:** Remove the row from `_commitment_candidates.md`. Nothing else.
+
+**Already done:** Remove the row from `_commitment_candidates.md`. Nothing else — no ledger entry needed for something already complete.
+
+After all candidates are resolved, `_commitment_candidates.md` should be empty or contain only entries from today (if the digest ran this morning before the check-in).
+
+---
+
 ### W2b — Commitments Audit
 Read `Brain/Commitments.md`. For each row with status `open`:
 - If the due date has passed: ask "Did you deliver on [what] for [who]?" Mark `kept` or `missed` based on the answer.
