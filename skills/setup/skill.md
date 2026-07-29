@@ -632,7 +632,7 @@ Create `Goals/Quarterly.md`:
 
 `System/integrations.yaml` already exists — it shipped with the vault skeleton, pre-structured and commented. **Edit it in place. Do not rewrite the file from scratch and do not invent a new shape for it.**
 
-Eleven things read this file by path — `/checkin`, `/goal`, `/lets-go`, `/comms-triage`, `/stein-doctor`, `/seed`, `/setup-transcript`, the daily digest agent, the weekly health report, `inbox-watcher.js`, and the dashboard. They look for `services.*`, `comms_hub.*`, `inbox_folder.*` and `digest.*` exactly as those keys are spelled in the file. Replacing the structure breaks all of them silently — `/lets-go` in particular will report every service as unconnected thirty minutes after you ran this step.
+Eleven things read this file by path — `/checkin`, `/goal`, `/lets-go`, `/seed`, `/setup-transcript`, the daily digest agent, the weekly health report, `inbox-watcher.js`, the dashboard, and two pack commands (`/comms-triage` from Communications Hub, `/stein-doctor` from Power User). They look for `services.*`, `comms_hub.*`, `inbox_folder.*` and `digest.*` exactly as those keys are spelled in the file. Replacing the structure breaks all of them silently — `/lets-go` in particular will report every service as unconnected thirty minutes after you ran this step.
 
 Read the file first, then fill in these fields:
 
@@ -643,7 +643,7 @@ Read the file first, then fill in these fields:
 - `provider:` — platform-matched (`google_calendar`/`gmail`/`google_drive`, or `microsoft_m365`)
 - `mcp_server:` — the MCP server ID from `claude mcp list`. Leave blank if not connected yet; every skill degrades gracefully on a blank value.
 
-**`comms_hub:`** — leave `enabled: false` unless the client is going to use `/comms-triage` from day one. If they are, enable the channels that have a connected MCP.
+**`comms_hub:`** — leave `enabled: false`. `/comms-triage` and `/comms-reply` are not in the base layer; they ship in the Communications Hub pack. If the client needs them from day one, run `bash Packs/comms-hub/install.sh .` after setup — that installer enables this block and tells you which channels to turn on.
 
 **`inbox_folder:`** — `name`, `drive`, and the full `local_path` from the inbox folder question. `inbox-watcher.js` reads `local_path` directly; if it's wrong or blank the watcher does nothing.
 

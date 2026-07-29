@@ -114,4 +114,4 @@ Same pattern as backlog sync: happens the moment the knowledge surfaces, not at 
 
 `Brain/System/Scripts/layer2-audit.py` runs nightly at 10pm via launchd. It reads that day's session logs, extracts Layer 2-worthy content (decisions with reasoning, frameworks, competitive observations, people insights), and writes to the appropriate `Brain/Knowledge/` or `Brain/People/` files autonomously. Audit trail at `Brain/System/layer2-audit-log.md`.
 
-Also runs as part of `/eod` when the client does a manual end-of-day review.
+Also runs as part of `/eod` when the client does a manual end-of-day review — `/eod` ships in the Power User pack, so this only applies if that pack is installed. The nightly job runs either way.
