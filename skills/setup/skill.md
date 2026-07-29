@@ -1,3 +1,15 @@
+---
+name: setup
+description: Client onboarding — interviews the client live and builds their entire personalized system from scratch. Identity files, people, projects, goals, task board, integrations. Run this once, in Session 1.
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Bash
+  - WebFetch
+---
+
 # /setup — Client Onboarding
 
 Interviews the client live and builds their fully personalized system from scratch. Runs without anyone else in the room.
@@ -618,117 +630,38 @@ Create `Goals/Quarterly.md`:
 
 ### Step 9 — Configure integrations
 
-Write `System/integrations.yaml` from everything captured in the tech stack interview. Fill in every field — use `none` where they said they don't use something, leave `enabled: false` for anything that exists but isn't connected yet.
+`System/integrations.yaml` already exists — it shipped with the vault skeleton, pre-structured and commented. **Edit it in place. Do not rewrite the file from scratch and do not invent a new shape for it.**
 
-```yaml
-# ── Device & OS ──────────────────────────────────────────
-device:
-  computer: mac           # mac | pc | both
-  phone: iphone           # iphone | android
+Eleven things read this file by path — `/checkin`, `/goal`, `/lets-go`, `/comms-triage`, `/stein-doctor`, `/seed`, `/setup-transcript`, the daily digest agent, the weekly health report, `inbox-watcher.js`, and the dashboard. They look for `services.*`, `comms_hub.*`, `inbox_folder.*` and `digest.*` exactly as those keys are spelled in the file. Replacing the structure breaks all of them silently — `/lets-go` in particular will report every service as unconnected thirty minutes after you ran this step.
 
-# ── Core platform ────────────────────────────────────────
-platform: google          # google | microsoft
+Read the file first, then fill in these fields:
 
-email:
-  provider: gmail         # gmail | outlook | other
-  enabled: true
+**`platform:`** — `google` or `microsoft`, from the core platform question.
 
-calendar:
-  provider: google        # google | outlook | other
-  enabled: true
+**`services:`** — for `calendar`, `email`, `files`, and `slack`:
+- `enabled:` — `true` if they use it, `false` if not
+- `provider:` — platform-matched (`google_calendar`/`gmail`/`google_drive`, or `microsoft_m365`)
+- `mcp_server:` — the MCP server ID from `claude mcp list`. Leave blank if not connected yet; every skill degrades gracefully on a blank value.
 
-drive:
-  provider: google_drive  # google_drive | onedrive | dropbox | other
-  enabled: true
+**`comms_hub:`** — leave `enabled: false` unless the client is going to use `/comms-triage` from day one. If they are, enable the channels that have a connected MCP.
 
-# ── Communication ─────────────────────────────────────────
-video:
-  provider: zoom          # zoom | google_meet | teams | webex | other
-  enabled: false
-  async_video: none       # loom | vidyard | none
+**`inbox_folder:`** — `name`, `drive`, and the full `local_path` from the inbox folder question. `inbox-watcher.js` reads `local_path` directly; if it's wrong or blank the watcher does nothing.
 
-messaging:
-  provider: slack         # slack | teams | discord | none
-  enabled: false
-  informal_channels:      # whatsapp groups, imessage threads used for work
-    - none
+**`digest:`** — `time`, `timezone` (IANA form, e.g. `America/New_York`), and `recipient_email`.
 
-# ── Project management ────────────────────────────────────
-project_management:
-  provider: notion        # notion | asana | monday | clickup | trello | linear | todoist | spreadsheet | none
-  enabled: false
+**`stack:`** — the tech-stack inventory block at the bottom. Fill in every category from the interview. Use `none` for anything they don't use and `[]` for empty lists. Nothing branches on this block — it exists so the system knows what they actually use, and so Andrew can spot connection opportunities. Do not skip it because it isn't wired to anything.
 
-# ── CRM & sales ───────────────────────────────────────────
-crm:
-  provider: hubspot       # hubspot | salesforce | pipedrive | gohighlevel | zoho | close | none
-  enabled: false
+After editing, confirm the file still parses:
 
-sales_tools:              # apollo | instantly | lemlist | linkedin_sales_nav | none
-  - none
-
-# ── Marketing ─────────────────────────────────────────────
-email_marketing:
-  provider: none          # mailchimp | activecampaign | kit | klaviyo | beehiiv | substack | none
-  enabled: false
-
-seo_tools:                # semrush | ahrefs | google_search_console | none
-  - none
-
-# ── Social media ──────────────────────────────────────────
-social:
-  platforms:              # linkedin | twitter_x | instagram | facebook | tiktok | youtube
-    - linkedin
-  scheduler: none         # buffer | hootsuite | later | publer | postiz | native | none
-
-# ── Design & creative ─────────────────────────────────────
-design:
-  tools:                  # canva | figma | adobe_photoshop | adobe_illustrator | adobe_premiere | none
-    - none
-
-# ── Website & analytics ───────────────────────────────────
-website:
-  platform: none          # wordpress | webflow | squarespace | wix | shopify | custom | none
-  analytics: none         # google_analytics | plausible | none
-
-# ── Finance ───────────────────────────────────────────────
-accounting:
-  provider: none          # quickbooks | xero | freshbooks | wave | spreadsheets | none
-
-payments:
-  provider: none          # stripe | paypal | square | ach | invoicing | none
-
-# ── Scheduling ────────────────────────────────────────────
-scheduling:
-  provider: none          # calendly | acuity | tidycal | email | none
-
-# ── Automation ────────────────────────────────────────────
-automation:
-  tools:                  # zapier | make | n8n | none
-    - none
-
-# ── AI tools ──────────────────────────────────────────────
-ai_tools:                 # chatgpt | claude | gemini | perplexity | midjourney | other
-  - claude
-
-# ── Other tools ───────────────────────────────────────────
-other_tools:              # anything else from the interview
-  - none
-
-# ── Inbox folder ──────────────────────────────────────────
-# Anything dropped here gets pulled into Brain/Inbox.md automatically.
-inbox_folder:
-  name: "AI Inbox"        # folder name — from interview, default "AI Inbox"
-  drive: google_drive     # google_drive | onedrive | icloud | dropbox
-  local_path: ""          # full local path — e.g. /Users/name/Google Drive/My Drive/AI Inbox
-
-# ── Daily digest ──────────────────────────────────────────
-digest:
-  time: "7:30 AM"
-  timezone: ""            # e.g. America/New_York — ask if not obvious
-  recipient_email: ""     # their email address — where the digest gets sent
+```bash
+python3 -c "import yaml;d=yaml.safe_load(open('System/integrations.yaml'));print('OK —',list(d.keys()))"
 ```
 
-For every tool with `enabled: false` that they actually use, add a follow-up to Master.md: `- [ ] Connect [tool] to [Client]'s system`.
+Expected output: `OK — ['platform', 'services', 'comms_hub', 'inbox_folder', 'digest', 'stack']`
+
+If any top-level key is missing, the structure got damaged — restore it from `_skeleton/System/integrations.yaml` and redo the edit.
+
+For every tool the client actually uses that isn't connected yet, add a follow-up to `Brain/Master.md`: `- [ ] Connect [tool] to [Client]'s system`.
 
 Confirm platform OAuth is working:
 ```bash
@@ -736,7 +669,6 @@ claude mcp list
 ```
 Calendar, email, and drive should appear as connected for their platform. If any are missing, add to Master.md follow-up — do not debug during the setup session.
 
----
 
 ### Step 10 — Create starter topic hubs
 
@@ -854,7 +786,9 @@ Say:
 >
 > From now on: open Claude Code in this folder every morning and run `/checkin`. That's the only habit that matters to start. Everything else — `/capture`, `/wrap`, `/recall` — you'll pick up naturally as you use it.
 >
-> The system gets smarter every session. Every email updates your contacts automatically. Every correction becomes a permanent rule. The longer it runs, the more it knows — and the more useful it gets."
+> The system gets smarter every session. Every email updates your contacts automatically. Every correction becomes a permanent rule. The longer it runs, the more it knows — and the more useful it gets.
+>
+> One thing you should know up front: once a week your system emails me a short activity summary — how many sessions you ran, which projects you touched, how many tasks are open, whether anything's stalling. Counts and project names, nothing from inside your notes. That's what I use to prep our calls, so I'm never asking you to catch me up. You can see exactly what goes out in System/Agents/weekly-health-report.md, and if you'd rather I didn't get it, say so and I'll turn it off."
 
 Run `/wrap` to log the setup session, then run `/setup-transcript` to send the interview to Andrew.
 

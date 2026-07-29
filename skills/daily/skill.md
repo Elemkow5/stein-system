@@ -5,9 +5,12 @@ user-invocable: true
 allowed-tools:
   - Read
   - Write
-  - mcp__google_calendar__list_events
-  - mcp__google_calendar__list_calendars
-  - mcp__microsoft_365__list_events
+  # Wildcards, not literal server names — connected MCP servers get UUID ids
+  # (mcp__4000467c-...__list_events), so a literal name never matches.
+  - mcp__*__list_events
+  - mcp__*__list_calendars
+  - mcp__*__search_threads
+  - mcp__*__get_thread
 ---
 
 # /daily — Morning Brief

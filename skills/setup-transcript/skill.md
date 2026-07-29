@@ -1,3 +1,15 @@
+---
+name: setup-transcript
+description: Compiles the /setup interview into a structured transcript and emails it to Andrew, which triggers the AI Workflow Assessment. Run at the very end of Session 1, after /wrap.
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Bash
+  - mcp__*__send_gmail_message
+  - mcp__*__create_draft
+---
+
 # /setup-transcript — Send Setup Interview to Andrew
 
 Compiles the /setup interview into a structured transcript and emails it to Andrew. Triggers the AI Workflow Assessment in Andrew's system.
@@ -19,7 +31,7 @@ Read the following files:
 - `System/integrations.yaml` — tools and platforms connected
 - The most recent file in `Brain/Session_Logs/` — the raw session record
 
-Also read any files in `Brain/People/` and `Brain/Goals/` that were created during /setup.
+Also read any files in `Brain/People/` and `Goals/` that were created during /setup.
 
 ### Step 2 — Compile the transcript
 
@@ -45,7 +57,7 @@ PROJECTS IN FLIGHT
 [List each active project with a 1-2 sentence description of where it stands]
 
 GOALS
-[3-year, annual, quarterly — pulled from Brain/Goals/ files]
+[3-year, annual, quarterly — pulled from Goals/ files]
 
 TOP PRIORITIES
 [From Priorities.yaml — what they're optimizing for right now]
