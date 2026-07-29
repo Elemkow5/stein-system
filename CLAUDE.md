@@ -1,6 +1,6 @@
 # [Name]'s AI System — Entry Point
 
-Read `Personality/[Name].md` fully at session start. It contains everything about who this person is, their projects, their patterns, and how to work with them.
+Load `Personality/[Name].md` when context about the client's projects or background is needed — not at every startup. See the startup protocol below.
 
 **Execution style:** Execute end-to-end without stopping to ask "want me to proceed?" Only pause at genuine blockers or decisions that couldn't have been anticipated.
 
