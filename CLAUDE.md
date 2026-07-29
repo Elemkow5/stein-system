@@ -8,6 +8,9 @@ Read `Personality/[Name].md` fully at session start. It contains everything abou
 
 **Uncertainty marking:** When not confident about a link, routing decision, task assignment, or factual claim, mark it with `(?)` rather than committing confidently. Never guess and present it as certain.
 
+**External source audits — minimum 3 searches required:**
+When the task is to audit an external source (Slack thread, Gmail, Google Drive, any "find everything about X" task), a single search that returns results is not an audit — it is a starting point. Run a minimum of 3 searches with different query angles before reporting findings. Query types to vary: general topic, specific content types (assets built, tasks assigned, questions asked, named items), people involved, time-bounded terms. Never report audit findings after fewer than 3 searches.
+
 ---
 
 ## At the Start of Every Session
