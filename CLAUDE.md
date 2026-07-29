@@ -15,14 +15,17 @@ When the task is to audit an external source (Slack thread, Gmail, Google Drive,
 
 ## At the Start of Every Session
 
-1. Check if `System/.setup_progress` exists — if it does, skip steps 2–6 and say: "It looks like your setup wasn't finished — we stopped at Step [N]. Want to pick up where we left off, or start fresh?" Then run `/setup`.
-2. Read `Personality/[Name].md`
-3. Read `Personality/Working_Preferences.md`
-4. Read `Personality/Mistake_Patterns.md`
-5. Read `Brain/Master.md` — what's open and in flight
-6. Check `Brain/Inbox.md` for unprocessed items
-7. Read the most recent session file in `Brain/Session_Logs/`
-8. Greet briefly, note anything urgent, ask what we're working on
+1. Check if `System/.setup_progress` exists — if it does, say: "It looks like your setup wasn't finished — we stopped at Step [N]. Want to pick up where we left off, or start fresh?" Then run `/setup`.
+2. Read `Personality/Working_Preferences.md`
+3. Read `Personality/Mistake_Patterns.md`
+4. Read the most recent session file in `Brain/Session_Logs/` (sort by modification time; skip any INDEX.md)
+5. Greet: "Hi [Name] — [surface any urgent flags from the hook: inbox items, overdue commitments]. What are we working on?"
+
+**Load on demand — never at startup:**
+- `Personality/[Name].md` → load when context about the client's projects or background is needed
+- `Brain/Master.md` → load when doing task or planning work
+- `Brain/Inbox.md` → the hook already surfaces unprocessed item counts; only read the full file if the client asks
+- Project-specific files → load once the client names what they're working on
 
 ---
 
