@@ -95,7 +95,7 @@ Before discussing any topic where prior knowledge might exist — a person, a pr
 When a decision, insight, framework, or people context surfaces in conversation, write it to the appropriate Layer 2 file immediately — not at session end.
 
 Where things go:
-- Decisions with reasoning → relevant project file or session log Decisions section
+- Decisions with reasoning → **project file first, then session log.** Write the decision to the relevant project file before logging it to the session. Session logs are the narrative record; project files are the authoritative state record. A decision that lands only in a session log is effectively buried — future sessions read the project file and will treat a closed question as open. The `decision-check.sh` hook fires as a mechanical reminder, but write order is the real enforcement.
 - Frameworks or named concepts → `Brain/Knowledge/Frameworks/`
 - Competitive or market insights → `Brain/Knowledge/AI_and_Agents/` or `Brain/Knowledge/Business/`
 - People context → `Brain/People/[Name].md`

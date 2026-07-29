@@ -16,11 +16,15 @@
     ],
     "PostToolUse": [
       {
-        "matcher": "Write",
+        "matcher": "Write|Edit",
         "hooks": [
           {
             "type": "command",
             "command": "bash .claude/hooks/post-write.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/decision-check.sh"
           }
         ]
       }
