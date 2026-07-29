@@ -24,11 +24,47 @@ Wait for answer. Accept: "daily" / "d", "weekly" / "w", "quarterly" / "q".
 
 ## Daily Mode
 
-**Run `/daily`.** That skill *is* daily mode — it does everything a short version would, plus the recent-email scan, People-file updates, competitor signals, and the pattern check. Do not reimplement it here.
+*Purpose: set clear priorities for today so the session has direction.*
 
-`/checkin` is the single habit the client is taught: one word covers their morning, their Monday, and their quarter. `/daily` is the engine behind the morning. Keeping the logic in one place is what stops the two from drifting apart.
+### D1 — Read Context
+Silently read:
+- `Personality/Priorities.yaml` — active priorities
+- `Brain/Master.md` — what's open, overdue, and flagged for this week
+- Most recent session log in `Brain/Session_Logs/` — what was left open
 
-Once `/daily` finishes, return here only if the client asked for weekly or quarterly as well.
+### D2 — Calendar Check
+If Google or Microsoft integration is configured in `System/integrations.yaml`, pull today's calendar events via MCP. List what's scheduled.
+
+If not connected: skip silently.
+
+### D3 — Surface What Matters Today
+Present a clean brief:
+
+```
+Today — [DAY], [DATE]
+
+Meetings: [list or "None"]
+
+Carried over from yesterday:
+- [items flagged as Today that weren't completed]
+
+This week's open tasks:
+- [top 3-5 from Brain/Master.md ## This Week]
+
+Top priority today (from Priorities.yaml):
+- [P0 priority current focus]
+```
+
+### D4 — Set Today's Focus
+Ask: "What's the one thing that would make today a success?"
+
+Add their answer as a `## Today` section in `Brain/Master.md` if one doesn't already exist, with today's date as the header.
+
+### D5 — Inbox Check
+Ask: "Anything new to capture before we start?" If yes, run /capture inline. If no, proceed.
+
+### D6 — Pattern Check
+Scan the task list and calendar. Offer **one** observation, only if something genuinely stands out — a priority with nothing moving on it, a meeting-heavy day with no deep work, an overdue item that keeps rolling forward. One line. No lecture. If nothing stands out, say nothing.
 
 ---
 

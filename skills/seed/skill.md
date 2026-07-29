@@ -391,7 +391,7 @@ Drive folder not connected or empty — skipped.
 
 ---
 
-*Review this report before your first /daily. The "New People Found" section is the most
+*Review this report before your first /checkin. The "New People Found" section is the most
 important — these are contacts the system discovered that you haven't told it about yet.
 Open each file and add context if they matter to your work.*
 ```
@@ -410,7 +410,7 @@ Say:
 > - [N] projects enriched with recent activity
 > [If Drive active:] - [N] documents ingested into Brain/Business.md
 >
-> Full report saved to Brain/seed-report.md — review it before your first /daily. The "New People Found" section has contacts the system found that you haven't told it about yet.
+> Full report saved to Brain/seed-report.md — review it before your first /checkin. The "New People Found" section has contacts the system found that you haven't told it about yet.
 >
 > Ready for /lets-go."
 

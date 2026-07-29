@@ -1,6 +1,6 @@
 ---
 name: inbox
-description: Process Brain/Inbox.md one item at a time — decide where each thing goes. Lighter than /planning — just clears the queue. Use when the client wants to work the inbox without a full planning session.
+description: Process Brain/Inbox.md one item at a time — decide where each thing goes. Lighter than /checkin — just clears the queue. Use when the client wants to work the inbox without a full check-in session.
 user-invocable: true
 allowed-tools:
   - Read

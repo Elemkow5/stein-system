@@ -109,6 +109,6 @@ Nothing else.
 
 - `/wrap` — full session close: commitment checks, Master.md sync, learning-loop review. Run at session end.
 - `/log` — session log health check only. Lighter, faster, can run anytime.
-- `/planning` (daily mode) — morning planning. Creates the day's session context.
+- `/checkin` (daily mode) — morning planning. Creates the day's session context.
 
 The recommended pattern: `/log` throughout the session to keep things current, `/wrap` at the end.

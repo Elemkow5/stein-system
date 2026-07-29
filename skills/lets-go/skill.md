@@ -167,7 +167,7 @@ Say:
 >
 > Every morning at [time]: your digest arrives in your inbox. Calendar, tasks, emails, priorities — everything in one place, ready before your first meeting.
 >
-> From now on, open Claude Code in this folder whenever you want to work with the system. Run `/daily` for your morning planning session. Run `/wrap` when you finish a project. Use `/capture` to log anything on the fly.
+> From now on, open Claude Code in this folder whenever you want to work with the system. Run `/checkin` for your morning planning session. Run `/wrap` when you finish a project. Use `/capture` to log anything on the fly.
 >
 > The system gets smarter every session. Every email updates your contacts automatically. Every correction becomes a permanent rule. It compounds."
 

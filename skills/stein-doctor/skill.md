@@ -103,6 +103,6 @@ ACTION ITEMS:
 
 ## Notes
 
-- Run weekly — best on Sunday alongside /checkin or Monday before /daily.
+- Run weekly — best on Sunday or Monday, alongside /checkin.
 - Red flags are information, not failure. The system exists to serve you.
 - A stale project isn't a broken system — it's a signal to either act or formally park it.

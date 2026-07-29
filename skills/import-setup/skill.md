@@ -304,10 +304,10 @@ Open `Brain/Master.md`. Add a project section for each active project. Use `[[wi
 *[One-sentence description from the interview]*
 
 ### This Week
-- [ ] (to be set by client on first /daily)
+- [ ] (to be set by client on first /checkin)
 
 ### Tasks
-- [ ] (to be set by client on first /daily)
+- [ ] (to be set by client on first /checkin)
 
 ### Backlog
 
@@ -409,7 +409,7 @@ inbox_folder:
 digest:
   time: "[DIGEST_TIME]"
   timezone: "[TIMEZONE]"
-  recipient_email: ""  # ask on first /daily if not provided
+  recipient_email: ""  # ask on first /checkin if not provided
 ```
 
 Fill in every field from the transcript. Use `none` where they don't use that tool. Leave `enabled: false` for anything that exists but isn't connected via Connectors yet.

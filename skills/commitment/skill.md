@@ -24,7 +24,7 @@ Ask: "What did you commit to?" Get the specific deliverable or outcome, in the c
 
 Ask: "Who is this owed to?"
 
-Match the name against `Brain/People/`. If a file exists, use it. If no file exists, offer to create one now using `Brain/People/_template.md` — same behavior `/daily` already uses when it meets a new meeting attendee. Fill in what's known (name, and role/company if mentioned); leave the rest blank.
+Match the name against `Brain/People/`. If a file exists, use it. If no file exists, offer to create one now using `Brain/People/_template.md` — same behavior `/checkin` already uses when it meets a new meeting attendee. Fill in what's known (name, and role/company if mentioned); leave the rest blank.
 
 ### Step 3 — Due date
 
@@ -54,7 +54,7 @@ Open `Brain/People/[PersonName].md`. If a `## Open Commitments` section doesn't 
 - [ ] [Due YYYY-MM-DD] What — made [today's date]
 ```
 
-This is what lets `/daily` surface it automatically the next time this person is on the calendar.
+This is what lets `/checkin` surface it automatically the next time this person is on the calendar.
 
 ### Step 7 — Confirm
 
